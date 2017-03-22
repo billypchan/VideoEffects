@@ -123,7 +123,15 @@ class VideoEffectsView: UIView
   }
   
   func filterChange() {
-    ciFilter = CIFilter(name: "CIPhotoEffect" + controlPanel.filterDisplayName)
+    if controlPanel.filterDisplayName == "G.blur" {
+        ciFilter = CIFilter(name: "CIGaussianBlur")
+    }
+    else if controlPanel.filterDisplayName == "Kaleidoscope" {
+        ciFilter = CIFilter(name: "CIKaleidoscope")
+    }
+    else {
+        ciFilter = CIFilter(name: "CIPhotoEffect" + controlPanel.filterDisplayName)
+    }
   }
   
   func scrub() {

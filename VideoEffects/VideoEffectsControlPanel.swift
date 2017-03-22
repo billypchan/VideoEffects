@@ -124,7 +124,7 @@ class VideoEffectsControlPanel: UIControl
     }()
   
   let filterDisplayNames = [
-    "None", "Chrome", "Fade", "Instant", "Mono", "Noir", "Process", "Tonal", "Transfer"]
+    "None", "Fade", "Instant", "Mono", "Noir", "Process", "Tonal", "G.blur", "Kaleidoscope"]
   
   var playButton: UIBarButtonItem {
     return toolbar.items!.first! as UIBarButtonItem
