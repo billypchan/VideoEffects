@@ -61,8 +61,8 @@ class FilteredVideoVendor: NSObject {
     player = AVPlayer(URL: url)
     
     guard let player = player,
-      currentItem = player.currentItem,
-      videoTrack = currentItem.asset.tracksWithMediaType(AVMediaTypeVideo).first else {
+      let currentItem = player.currentItem,
+      let videoTrack = currentItem.asset.tracksWithMediaType(AVMediaTypeVideo).first else {
         fatalError("** unable to access item **")
     }
     
@@ -96,7 +96,7 @@ class FilteredVideoVendor: NSObject {
   // MARK: Main playback loop
   func step(link: CADisplayLink) {
     guard let player = player,
-      currentItem = player.currentItem else {
+      let currentItem = player.currentItem else {
         return
     }
     
@@ -116,7 +116,7 @@ class FilteredVideoVendor: NSObject {
   
   func displayVideoFrame(time: CMTime) {
     guard let player = player,
-      currentItem = player.currentItem where player.status == .ReadyToPlay && currentItem.status == .ReadyToPlay else {
+      let currentItem = player.currentItem where player.status == .ReadyToPlay && currentItem.status == .ReadyToPlay else {
         return
     }
     
@@ -146,7 +146,7 @@ class FilteredVideoVendor: NSObject {
   
   func displayFilteredImage() {
     guard let unfilteredImage = unfilteredImage,
-      videoTransform = videoTransform else {
+      let videoTransform = videoTransform else {
         return
     }
     
@@ -165,7 +165,7 @@ class FilteredVideoVendor: NSObject {
       ciImage,
       fromRect: ciImage.extent)
     
-    delegate?.finalOutputUpdated(UIImage(CGImage: cgImage))
+    delegate?.finalOutputUpdated(UIImage(CGImage: cgImage!))
   }
   
 }
